@@ -1,7 +1,5 @@
 from rest_framework import serializers
-from .models import Maestro, Institucion, FormacionAcademica, CapacitacionDocente, ActualizacionDisciplinar
-from .models import GestionAcademica, ProductosAcademicosR, ExpProfesionalNoA, ExpDiseñoIngenieril
-from .models import LogrosProfesionalesNoA, ParticipacionOrganismos, Reconocimientos, Aportacion
+from .models import *
 
 
 class InstitucionSerializer(serializers.ModelSerializer):
