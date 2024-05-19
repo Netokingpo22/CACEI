@@ -1,18 +1,19 @@
-from django.urls import path
 from .views import *
+from rest_framework import routers
+from Maestro.viewsets import *
 
-urlpatterns = [
-    path('maestros/', maestros, name='maestros'),
-    path('instituciones/', instituciones, name='instituciones'),
-    path('formaciones/', formaciones, name='formaciones'),
-    path('capacitaciones/', capacitaciones, name='capacitaciones'),
-    path('actualizaciones/', actualizaciones, name='actualizaciones'),
-    path('gestiones/', gestiones, name='gestiones'),
-    path('productos/', productos, name='productos'),
-    path('exp_profesional_no_a/', exp_profesional_no_a, name='exp_profesional_no_a'),
-    path('exp_diseño_ingenieril/', exp_diseño_ingenieril, name='exp_diseño_ingenieril'),
-    path('logros_profesionales_no_a/', logros_profesionales_no_a, name='logros_profesionales_no_a'),
-    path('participacion_organismos/', participacion_organismos, name='participacion_organismos'),
-    path('reconocimientos/', reconocimientos, name='reconocimientos'),
-    path('aportacion/', aportacion, name='aportacion'),
-]
+route = routers.SimpleRouter()
+route.register('maestro', MaestroViewSet)
+route.register('institucion', InstitucionViewSet)
+route.register('formacion', FormacionAcademicaViewSet)
+route.register('capacitacion', CapacitacionDocenteViewSet)
+route.register('disciplinar', ActualizacionDisciplinarViewSet)
+route.register('gestion', GestionAcademicaViewSet)
+route.register('productos', ProductosAcademicosRViewSet)
+route.register('expNoAcademica', ExpProfesionalNoAViewSet)
+route.register('expIngenieril', ExpDiseñoIngenierilViewSet)
+route.register('logrosNoAcademicos', LogrosProfesionalesNoAViewSet)
+route.register('participacion', ParticipacionOrganismosViewSet)
+route.register('reconocimientos', ReconocimientosViewSet)
+route.register('aportacion', AportacionViewSet)
+urlpatterns = route.urls
