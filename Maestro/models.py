@@ -1,10 +1,12 @@
 from django.db import models
 
-
 class Maestro(models.Model):
     numeroProfesor = models.IntegerField()
     fechaIngreso = models.DateField()
-    nombramientoActual = models.CharField(max_length=256)
+    nombramientoActual = models.CharField(max_length=256)   
+
+    def __str__(self):
+        return f"id:{self.id} numero:{self.numeroProfesor} nombramiento:{self.nombramientoActual}" 
     
 class Institucion(models.Model):
     nombre = models.CharField(max_length=256)
